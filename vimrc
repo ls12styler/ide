@@ -1,4 +1,3 @@
-execute pathogen#infect()
 set nocompatible              " be iMproved, required
 syntax on
 filetype plugin on
@@ -64,9 +63,6 @@ let g:ctrlp_show_hidden = 1
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
 "set laststatus=2
-
-" Go
-let g:syntastic_go_checkers = ['go', 'gofmt', 'golint', 'gometalinter', 'govet']
 
 " Buffers
 " Move to the previous buffer with "gp"
