@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Install basics (HAVE to install bash & ncurses for tpm to work)
-RUN apk update && apk add vim tmux git bash zsh wget curl ncurses
+RUN apk update && apk add vim tmux git bash zsh wget curl ncurses docker
 
 WORKDIR /home/me
 ENV HOME /home/me
