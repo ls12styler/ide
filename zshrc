@@ -7,6 +7,7 @@ ZSH_THEME="xxf"
 # Plugins?
 plugins=(
   git
+  tmux
 )
 
 HOST="[IDE] ($HOST)"

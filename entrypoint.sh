@@ -14,4 +14,4 @@ if [ ! -z "$USER_ID" ] && [ "$(id -u user)" != "$USER_ID" ]; then
 fi
 chown -R user: /home/user
 
-exec /sbin/su-exec user zsh "$@"
+exec /sbin/su-exec user tmux -u "$@"

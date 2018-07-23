@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Install basics (HAVE to install bash & ncurses for tpm to work)
-RUN apk update && apk add -U --no-cache zsh git shadow su-exec vim
+RUN apk update && apk add -U --no-cache zsh git shadow su-exec vim tmux bash ncurses less
 
 # Create a user called 'user'
 RUN useradd -ms /bin/zsh user
@@ -27,9 +27,9 @@ RUN git clone https://github.com/kien/ctrlp.vim.git .vim/bundle/ctrlp.vim
 RUN vim +PluginInstall +qall >> /dev/null
 
 # Install TMUX
-#COPY tmux.conf .tmux.conf
-#RUN git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
-#RUN .tmux/plugins/tpm/bin/install_plugins
+COPY tmux.conf .tmux.conf
+RUN git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
+RUN .tmux/plugins/tpm/bin/install_plugins
 
 # Entrypoint script does switches u/g ID's and `chown`s everything
 COPY entrypoint.sh /bin/entrypoint.sh
