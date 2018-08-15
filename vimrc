@@ -38,19 +38,17 @@ nmap <leader>bl :ls<CR>
 
 "========================
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'derekwyatt/vim-scala'
+call plug#begin()
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'johngrib/vim-game-code-break'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-syntastic/syntastic'
+Plug 'derekwyatt/vim-scala'
+call plug#end()
 
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -73,3 +71,6 @@ nnoremap gn :bn<CR>
 nnoremap gl :ls<CR>
 " List all possible buffers with "gb" and accept a new buffer argument [1]
 nnoremap gb :ls<CR>:b
+
+
+let g:airline_theme = 'solarized'

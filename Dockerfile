@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Install basics (HAVE to install bash & ncurses for tpm to work)
-RUN apk update && apk add -U --no-cache zsh git shadow su-exec vim tmux bash ncurses less
+RUN apk update && apk add -U --no-cache zsh git shadow su-exec neovim tmux bash ncurses less curl python2 python3 ruby openssh-client
 
 # Create a user called 'user'
 RUN useradd -ms /bin/zsh user
@@ -19,12 +19,11 @@ RUN wget https://gist.githubusercontent.com/xfanwu/18fd7c24360c68bab884/raw/f093
 COPY zshrc .zshrc
 
 # Configure text editor - vim!
-RUN git clone https://github.com/VundleVim/Vundle.vim.git .vim/bundle/Vundle.vim
+RUN curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # Consult the vimrc file to see what's installed
-COPY vimrc .vimrc 
+COPY vimrc .config/nvim/init.vim 
 # Ctrl-P isn't managed by Vundle :(
-RUN git clone https://github.com/kien/ctrlp.vim.git .vim/bundle/ctrlp.vim
-RUN vim +PluginInstall +qall >> /dev/null
+RUN nvim +PlugInstall +qall >> /dev/null
 
 # Install TMUX
 COPY tmux.conf .tmux.conf
