@@ -4,7 +4,7 @@
 [alias]
     co = checkout
     ci = commit
-    di = diff
+    d = diff
     ds = diff --staged
     p = push
     f = fetch

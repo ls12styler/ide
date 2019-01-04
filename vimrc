@@ -60,6 +60,7 @@ let g:ctrlp_show_hidden = 1
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='molokai'
 "set laststatus=2
 
 " Buffers
@@ -71,6 +72,3 @@ nnoremap gn :bn<CR>
 nnoremap gl :ls<CR>
 " List all possible buffers with "gb" and accept a new buffer argument [1]
 nnoremap gb :ls<CR>:b
-
-
-let g:airline_theme = 'solarized'
