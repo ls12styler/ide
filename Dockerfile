@@ -3,12 +3,11 @@ FROM alpine:latest
 # Install basics (HAVE to install bash & ncurses for tpm to work)
 RUN apk update && apk add -U --no-cache zsh git shadow su-exec neovim tmux bash ncurses less curl python2 python3 ruby openssh-client
 
-# Create a user called 'user'
-RUN useradd -ms /bin/zsh user
-#USER user
+# Create a user called 'me'
+RUN useradd -ms /bin/zsh me
 # Do everything from now in that users home directory
-WORKDIR /home/user
-ENV HOME /home/user
+WORKDIR /home/me
+ENV HOME /home/me
 
 # Setup my $SHELL
 ENV SHELL /bin/zsh
@@ -32,4 +31,5 @@ RUN .tmux/plugins/tpm/bin/install_plugins
 
 # Entrypoint script does switches u/g ID's and `chown`s everything
 COPY entrypoint.sh /bin/entrypoint.sh
-ENTRYPOINT ["/bin/entrypoint.sh"]
+WORKDIR /workspace
+CMD ["/bin/entrypoint.sh"]
