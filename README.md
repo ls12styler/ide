@@ -8,3 +8,8 @@ docker run -it --rm -v `pwd`:/workspace \
 	ls12styler/ide:latest
 ```
 This mounts the CWD under `/workspace`.
+
+# TODO's
+
+* Secrets?
+** SSH Keys
