@@ -14,4 +14,13 @@ if [ ! -z "$USER_ID" ] && [ "$(id -u me)" != "$USER_ID" ]; then
 fi
 chown -R me: /home/me
 
+# Setting permissions on docker.sock
+chown me: /var/run/docker.sock
+
+# Git config
+if [ ! -z "$GIT_USER_NAME" ] && [ ! -z "$GIT_USER_EMAIL" ]; then
+	git config --global user.name "$GIT_USER_NAME"
+	git config --global user.email "$GIT_USER_EMAIL"
+fi
+
 exec /sbin/su-exec me tmux -u -2 "$@"

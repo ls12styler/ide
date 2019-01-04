@@ -1,0 +1,16 @@
+[user]
+[push]
+    default = current
+[alias]
+    co = checkout
+    ci = commit
+    di = diff
+    ds = diff --staged
+    p = push
+    f = fetch
+    a = add -p
+    s = status
+    wc = whatchanged -p
+    rb = rebase
+[core]
+    hooksPath = ./.git/hooks

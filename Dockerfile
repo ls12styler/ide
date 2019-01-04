@@ -1,7 +1,10 @@
 FROM alpine:latest
 
 # Install basics (HAVE to install bash & ncurses for tpm to work)
-RUN apk update && apk add -U --no-cache zsh git shadow su-exec neovim tmux bash ncurses less curl python2 python3 ruby openssh-client
+RUN apk update && apk add -U --no-cache zsh git git-perl shadow su-exec neovim tmux bash ncurses less curl python2 python3 ruby openssh-client docker py-pip man
+
+# Install docker-compose
+RUN pip install docker-compose
 
 # Create a user called 'me'
 RUN useradd -ms /bin/zsh me
@@ -29,7 +32,14 @@ COPY tmux.conf .tmux.conf
 RUN git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
 RUN .tmux/plugins/tpm/bin/install_plugins
 
+# Copy git config over
+COPY gitconfig .gitconfig
+
 # Entrypoint script does switches u/g ID's and `chown`s everything
 COPY entrypoint.sh /bin/entrypoint.sh
+
+# Set working directory to /workspace
 WORKDIR /workspace
+
+# Default entrypoint, can be overridden
 CMD ["/bin/entrypoint.sh"]
