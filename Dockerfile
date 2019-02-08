@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # Install basics (HAVE to install bash & ncurses for tpm to work)
-RUN apk update && apk add -U --no-cache zsh git git-perl shadow su-exec neovim tmux bash ncurses less curl python2 python3 ruby openssh-client docker py-pip man bind-utils
+RUN apk update && apk add -U --no-cache zsh git git-perl shadow su-exec neovim tmux bash ncurses less curl python2 python3 ruby openssh-client docker py-pip man bind-tools
 
 # Install docker-compose
 RUN pip install docker-compose
