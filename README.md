@@ -4,6 +4,7 @@ Run via:
 ```
 docker run -it --rm \
     -v `pwd`:/workspace \
+    -v /var/run/docker.sock:/var/run/docker.sock \
     -v ~/.ssh:/home/me/.ssh \
     -e HOST_USER_ID=$(id -u $USER) -e HOST_GROUP_ID=$(id -g $USER) \
     -e GIT_USER_NAME="My Name" -e GIT_USER_EMAIL="my@email.com"
