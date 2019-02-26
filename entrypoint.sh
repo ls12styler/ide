@@ -21,6 +21,6 @@ fi
 chown -R me: /home/me
 
 # Setting permissions on docker.sock
-chown me: /var/run/docker.sock
+chgrp group /var/run/docker.sock
 
 exec /sbin/su-exec me tmux -u -2 "$@"
