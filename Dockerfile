@@ -6,6 +6,9 @@ RUN apk update && apk add -U --no-cache zsh git git-perl shadow su-exec neovim t
 # Install docker-compose
 RUN pip install docker-compose
 
+# Install jQ!
+RUN wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O /bin/jq && chmod +x /bin/jq
+
 # Create a user called 'me'
 RUN useradd -ms /bin/zsh me
 # Do everything from now in that users home directory
