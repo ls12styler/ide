@@ -3,7 +3,10 @@
 This allows an instance of the IDE per project.
 
 Run via:
+
 ```
+  PROJECT_NAME=${PWD#"${PWD%/*/*}/"}
+  CONTAINER_NAME=${PROJECT_NAME//\//_}
   docker run -it --rm \
   -v $PWD:/workspace \
   -v /var/run/docker.sock:/var/run/docker.sock \
@@ -11,9 +14,10 @@ Run via:
   -e HOST_PATH=$PWD \
   -e HOST_USER_ID=$(id -u $USER) \
   -e HOST_GROUP_ID=$(id -g $USER) \
-  -e PROJECT_NAME=${PWD#"${PWD%/*/*}/"} \
+  -e PROJECT_NAME=$PROJECT_NAME \
   -e GIT_USER_NAME="My Name" \
   -e GIT_USER_EMAIL="me@email.com" \
+  --name $CONTAINER_NAME \
   ls12styler/ide:latest
 ```
 
