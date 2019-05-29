@@ -10,7 +10,9 @@ plugins=(
   tmux
 )
 
-HOST="[IDE] ($HOST)"
+PROJECT_NAME=${PROJECT_NAME:-~}
+
+HOST="[IDE] ($PROJECT_NAME)"
 
 alias vim="nvim"
 
