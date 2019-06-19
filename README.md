@@ -11,6 +11,7 @@ Run via:
   -v $PWD:/workspace \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v ~/.ssh:/home/me/.ssh \
+  -v ~/.tmux/ressurect/${PROJECT_NAME}:/home/me/.tmux/resurrect \
   -e HOST_PATH=$PWD \
   -e HOST_USER_ID=$(id -u $USER) \
   -e HOST_GROUP_ID=$(id -g $USER) \
