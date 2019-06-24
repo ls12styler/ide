@@ -23,4 +23,4 @@ chown -R me: /home/me
 # Setting permissions on docker.sock
 chgrp group /var/run/docker.sock
 
-exec /sbin/su-exec me tmux -u -2 "$@"
+exec /sbin/su-exec me tmux -u -2 new -s ${PROJECT_NAME}
