@@ -41,7 +41,6 @@ nmap <leader>bl :ls<CR>
 call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'johngrib/vim-game-code-break'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline'
