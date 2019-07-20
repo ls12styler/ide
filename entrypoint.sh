@@ -21,7 +21,7 @@ fi
 chown -R me: /home/me
 
 # Give user `me` permission to use docker!
-if [ -f "/var/run/docker.sock" ]; then
+if [ -S "/var/run/docker.sock" ]; then
     # Find the hosts group ID for the docker socket
     HOST_DOCKER_SOCKET_GROUP_ID=`stat -c %g /var/run/docker.sock`
     # create the group `docker`
