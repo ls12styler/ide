@@ -2,10 +2,8 @@ FROM ls12styler/dind:latest
 
 # Install basics (HAVE to install bash & ncurses for tpm to work)
 RUN apk update && apk add -U --no-cache \
-	bash zsh git neovim less curl bind-tools \
-	man build-base su-exec shadow openssh-client \
-	# Required for docker-compose
-	py-pip python-dev libffi-dev openssl-dev gcc libc-dev make
+	bash zsh git git-perl neovim less curl bind-tools \
+	man build-base su-exec shadow openssh-client
 
 # Install tmux
 COPY --from=ls12styler/tmux:latest /usr/local/bin/tmux /usr/local/bin/tmux
@@ -14,7 +12,7 @@ COPY --from=ls12styler/tmux:latest /usr/local/bin/tmux /usr/local/bin/tmux
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O /bin/jq && chmod +x /bin/jq
 
 # Create a user called 'me'
-RUN useradd -ms /bin/zsh me
+#RUN useradd -ms /bin/zsh me
 # Do everything from now in that users home directory
 WORKDIR /home/me
 ENV HOME /home/me
