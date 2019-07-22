@@ -1,6 +1,6 @@
 FROM ls12styler/dind:latest
 
-# Install basics (HAVE to install bash & ncurses for tpm to work)
+# Install basics (HAVE to install bash for tpm to work)
 RUN apk update && apk add -U --no-cache \
 	bash zsh git git-perl neovim less curl bind-tools \
 	man build-base su-exec shadow openssh-client
@@ -11,9 +11,7 @@ COPY --from=ls12styler/tmux:latest /usr/local/bin/tmux /usr/local/bin/tmux
 # Install jQ!
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O /bin/jq && chmod +x /bin/jq
 
-# Create a user called 'me'
-#RUN useradd -ms /bin/zsh me
-# Do everything from now in that users home directory
+# In the entrypoint, we'll create a user called `me`
 WORKDIR /home/me
 ENV HOME /home/me
 
@@ -29,9 +27,18 @@ COPY zshrc .zshrc
 RUN curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # Consult the vimrc file to see what's installed
 COPY vimrc .config/nvim/init.vim 
-# Ctrl-P isn't managed by Vundle :(
-RUN nvim +PlugInstall +qall >> /dev/null
+# Clone the git repos of Vim plugins
+WORKDIR ~/.config/nvim/plugged/
+RUN git clone --depth=1 https://github.com/ctrlpvim/ctrlp.vim
+RUN git clone --depth=1 https://github.com/tpope/vim-fugitive
+RUN git clone --depth=1 https://github.com/godlygeek/tabular
+RUN git clone --depth=1 https://github.com/plasticboy/vim-markdown
+RUN git clone --depth=1 https://github.com/vim-airline/vim-airline
+RUN git clone --depth=1 https://github.com/vim-airline/vim-airline-themes
+RUN git clone --depth=1 https://github.com/vim-syntastic/syntastic
+RUN git clone --depth=1 https://github.com/derekwyatt/vim-scala
 
+WORKDIR /home/me
 # Install TMUX
 COPY tmux.conf .tmux.conf
 RUN git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm

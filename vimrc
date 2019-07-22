@@ -72,6 +72,5 @@ nnoremap gl :ls<CR>
 " List all possible buffers with "gb" and accept a new buffer argument [1]
 nnoremap gb :ls<CR>:b
 
-
 " Disable Vim Folding
 set nofoldenable
