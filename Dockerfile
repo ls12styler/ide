@@ -5,6 +5,12 @@ RUN apk update && apk add -U --no-cache \
 	bash zsh git git-perl neovim less curl bind-tools \
 	man build-base su-exec shadow openssh-client
 
+# Set Timezone
+RUN apk add tzdata && \
+    cp /usr/share/zoneinfo/Europe/London /etc/localtime && \
+    echo "Europe/London" > /etc/timezone && \
+    apk del tzdata
+
 ENV HOME /home/me
 
 # Install tmux
