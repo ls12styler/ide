@@ -1,4 +1,4 @@
-FROM ls12styler/dind:latest
+FROM ls12styler/dind:19.03.1
 
 # Install basics (HAVE to install bash for tpm to work)
 RUN apk update && apk add -U --no-cache \
