@@ -2,8 +2,8 @@ FROM ls12styler/dind:19.03.1
 
 # Install basics (HAVE to install bash for tpm to work)
 RUN apk update && apk add -U --no-cache \
-	bash zsh git git-perl neovim less curl bind-tools \
-	man build-base su-exec shadow openssh-client
+    bash zsh git git-perl neovim less curl bind-tools \
+    man build-base su-exec shadow openssh-client
 
 # Set Timezone
 RUN apk add tzdata && \
