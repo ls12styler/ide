@@ -6,6 +6,8 @@ if [ ! -z "$GIT_USER_NAME" ] && [ ! -z "$GIT_USER_EMAIL" ]; then
     git config --global user.email "$GIT_USER_EMAIL"
 fi
 
+export IVY_PATH=${IVY_PATH:-"${HOST_PATH}/.ivy2"}
+
 # Create a user and group that matches the host, either using ID's provided or
 # collected from the '/workspace' directory
 export HOST_USER_ID=${HOST_USER_ID:-`stat -c %u /workspace`}
