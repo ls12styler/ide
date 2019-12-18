@@ -5,21 +5,31 @@ This allows an instance of the IDE per project.
 Run via:
 
 ```
+function ide() {
+  PROJECT_DIR=${PWD##*/}
   PROJECT_NAME=${PWD#"${PWD%/*/*}/"}
   CONTAINER_NAME=${PROJECT_NAME//\//_}
-  docker run -it --rm \
-  -v $PWD:/workspace \
+  mkdir -p ~/.tmux/resurrect/${PROJECT_NAME}
+  mkdir -p ~/.zsh/history/${PROJECT_NAME}
+  touch ~/.zsh/history/${PROJECT_NAME}/zsh_history
+  docker run --rm -it \
+  -w /${PROJECT_DIR} \
+  -v $PWD:/${PROJECT_DIR} \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v ~/.ssh:/home/me/.ssh \
-  -v ~/.tmux/ressurect/${PROJECT_NAME}:/home/me/.tmux/resurrect \
+  -v ~/.tmux/resurrect/${PROJECT_NAME}:/home/me/.tmux/resurrect \
+  -v ~/.zsh/history/${PROJECT_NAME}/zsh_history:/home/me/.zsh_history \
+  -e IVY_PATH=${HOME}/.ivy2 \
   -e HOST_PATH=$PWD \
   -e HOST_USER_ID=$(id -u $USER) \
   -e HOST_GROUP_ID=$(id -g $USER) \
   -e PROJECT_NAME=$PROJECT_NAME \
-  -e GIT_USER_NAME="My Name" \
-  -e GIT_USER_EMAIL="me@email.com" \
+  -e GIT_USER_NAME="Me McMe" \
+  -e GIT_USER_EMAIL="me@me.com" \
   --name $CONTAINER_NAME \
+  --net host \
   ls12styler/ide:latest
+}
 ```
 
 This mounts the CWD under `/workspace`.
