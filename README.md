@@ -26,6 +26,7 @@ function ide() {
   -e PROJECT_NAME=$PROJECT_NAME \
   -e GIT_USER_NAME="Me McMe" \
   -e GIT_USER_EMAIL="me@me.com" \
+  -e KUBE_CONFIG="/path/to/.kube/config" \
   --name $CONTAINER_NAME \
   --net host \
   ls12styler/ide:latest
