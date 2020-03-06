@@ -28,8 +28,8 @@ function ide() {
   -e PROJECT_NAME=$PROJECT_NAME \
   -e GIT_USER_NAME="Me McMe" \
   -e GIT_USER_EMAIL="me@me.com" \
-  -e KUBE_CONFIG="/path/to/.kube/config" \
-  -e HELM_CONFIG="/path/to/.helm" \
+  -e KUBE_HOME="/path/to/.kube" \
+  -e HELM_HOME="/path/to/.helm" \
   --name $CONTAINER_NAME \
   --net host \
   ls12styler/ide:latest
