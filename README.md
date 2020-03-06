@@ -9,16 +9,18 @@ function ide() {
   PROJECT_DIR=${PWD##*/}
   PROJECT_NAME=${PWD#"${PWD%/*/*}/"}
   CONTAINER_NAME=${PROJECT_NAME//\//_}
-  mkdir -p ~/.tmux/resurrect/${PROJECT_NAME}
-  mkdir -p ~/.zsh/history/${PROJECT_NAME}
-  touch ~/.zsh/history/${PROJECT_NAME}/zsh_history
+  TMUX_RESURRECT=${HOME}/.ide/${PROJECT_NAME}/tmux/resurrect
+  mkdir -p ${TMUX_RESURRECT}
+  ZSH=${HOME}/.ide/${PROJECT_NAME}/zsh/
+  mkdir -p ${ZSH}
+  touch ${ZSH}/zsh_history
   docker run --rm -it \
   -w /${PROJECT_DIR} \
   -v $PWD:/${PROJECT_DIR} \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v ~/.ssh:/home/me/.ssh \
-  -v ~/.tmux/resurrect/${PROJECT_NAME}:/home/me/.tmux/resurrect \
-  -v ~/.zsh/history/${PROJECT_NAME}/zsh_history:/home/me/.zsh_history \
+  -v ${TMUX_RESURRECT}:/home/me/.tmux/resurrect \
+  -v ${ZSH_HISTORY}:/home/me/.zsh_history \
   -e IVY_PATH=${HOME}/.ivy2 \
   -e HOST_PATH=$PWD \
   -e HOST_USER_ID=$(id -u $USER) \
@@ -27,6 +29,7 @@ function ide() {
   -e GIT_USER_NAME="Me McMe" \
   -e GIT_USER_EMAIL="me@me.com" \
   -e KUBE_CONFIG="/path/to/.kube/config" \
+  -e HELM_CONFIG="/path/to/.helm" \
   --name $CONTAINER_NAME \
   --net host \
   ls12styler/ide:latest
