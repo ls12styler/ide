@@ -9,6 +9,7 @@ plugins=(
   git
   tmux
   kubectl
+  zsh-autosuggestions
 )
 
 HOST="[IDE] ($PROJECT_NAME)"
