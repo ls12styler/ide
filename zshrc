@@ -12,6 +12,8 @@ plugins=(
   zsh-autosuggestions
 )
 
+bindkey '^ ' forward-word
+
 HOST="[IDE] ($PROJECT_NAME)"
 
 alias vim="nvim"
