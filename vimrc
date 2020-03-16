@@ -46,6 +46,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-syntastic/syntastic'
+Plug 'frazrepo/vim-rainbow'
+Plug 'airblade/vim-gitgutter'
 Plug 'derekwyatt/vim-scala'
 call plug#end()
 
