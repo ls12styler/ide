@@ -51,6 +51,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'derekwyatt/vim-scala'
 call plug#end()
 
+" vim-rainbow
+" Enable vim-rainbow globally
+let g:rainbow_active = 1
+
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
