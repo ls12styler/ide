@@ -54,9 +54,10 @@ call plug#end()
 " vim-rainbow
 " Enable vim-rainbow globally
 let g:rainbow_active = 1
+let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 " CtrlP
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.config/nvim/plugged/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
