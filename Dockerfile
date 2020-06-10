@@ -1,4 +1,4 @@
-FROM ls12styler/dind:19.03.1
+FROM ls12styler/dind:19.03.9
 
 # Install basics (HAVE to install bash for tpm to work)
 RUN apk update && apk add -U --no-cache \
@@ -14,7 +14,7 @@ RUN apk add tzdata && \
 ENV HOME /home/me
 
 # Install tmux
-COPY --from=ls12styler/tmux:latest /usr/local/bin/tmux /usr/local/bin/tmux
+COPY --from=ls12styler/tmux:3.1b /usr/local/bin/tmux /usr/local/bin/tmux
 
 # Install jQ!
 RUN wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 -O /bin/jq && chmod +x /bin/jq
