@@ -34,7 +34,8 @@ RUN git clone --depth=1 https://github.com/ctrlpvim/ctrlp.vim && \
     git clone --depth=1 https://github.com/vim-syntastic/syntastic && \
     git clone --depth=1 https://github.com/frazrepo/vim-rainbow && \
     git clone --depth=1 https://github.com/airblade/vim-gitgutter && \
-    git clone --depth=1 https://github.com/derekwyatt/vim-scala
+    git clone --depth=1 https://github.com/derekwyatt/vim-scala && \
+    git clone --depth=1 https://github.com/hashivim/vim-terraform.git
 
 # In the entrypoint, we'll create a user called `me`
 WORKDIR ${HOME}
