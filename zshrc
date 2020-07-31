@@ -22,7 +22,7 @@ alias sbt="docker run --rm -it -u $HOST_USER_ID:$HOST_GROUP_ID -v $HOST_PATH:/pr
 alias kubectl="docker run --rm -it -v ${KUBE_HOME}:/.kube -w /project -v ${HOST_PATH}:/project bitnami/kubectl:latest"
 alias k8s=kubectl
 alias helm="docker run -ti --rm -v ${HOST_PATH}:/apps -v ${KUBE_HOME}:/root/.kube -v ${KUBE_HOME}:/root/.config/kube -v ${HELM_HOME}:/root/.config/helm -v ${HELM_HOME}/cache:/root/.cache/helm alpine/helm"
-alias gcloud="docker run --rm -it --volumes-from=gcloud-config google/cloud-sdk:alpine gcloud"
+alias gcloud="docker run --rm -it --volumes-from=gcloud-config google/cloud-sdk:latest gcloud"
 alias terraform="docker run --rm -it -v $HOST_PATH:/workspace -w /workspace hashicorp/terraform:light"
 alias tf=terraform
 
