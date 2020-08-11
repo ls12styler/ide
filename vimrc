@@ -49,6 +49,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'derekwyatt/vim-scala'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " vim-rainbow
