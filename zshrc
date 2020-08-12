@@ -17,8 +17,28 @@ bindkey '^ ' forward-word
 HOST="[IDE] ($PROJECT_NAME)"
 
 # Helper functions
+
+## Terraform
+# Enables terraform command to be run from the CWD,
+# which is mounted under /workspace in the container
+# and things be relative (downstream) to that CWD.
 terraform() {
-	docker run --rm -it -v ${HOST_PATH}/..$(pwd):/workspace -w /workspace hashicorp/terraform:light
+	docker run --rm -it \
+		-v ${HOST_PATH}/..$(pwd):/workspace \
+		-w /workspace \
+		hashicorp/terraform:light $@
+}
+
+## Google Cloud SDK
+# Enables gcloud command to be run from the CWD,
+# which is mounted under /workspace in the container
+# and things be relative (downstream) to that CWD.
+gcloud() {
+	docker run --rm -it \
+	    -v ${HOST_PATH}/..$(pwd):/workspace \
+		-w /workspace \
+		--volumes-from=gcloud-config \
+		google/cloud-sdk:latest gcloud
 }
 
 # Aliases
@@ -28,7 +48,6 @@ alias sbt="docker run --rm -it -u $HOST_USER_ID:$HOST_GROUP_ID -v $HOST_PATH:/pr
 alias kubectl="docker run --rm -it -v ${KUBE_HOME}:/.kube -w /project -v ${HOST_PATH}:/project bitnami/kubectl:latest"
 alias k8s=kubectl
 alias helm="docker run -ti --rm -v ${HOST_PATH}:/apps -v ${KUBE_HOME}:/root/.kube -v ${KUBE_HOME}:/root/.config/kube -v ${HELM_HOME}:/root/.config/helm -v ${HELM_HOME}/cache:/root/.cache/helm alpine/helm"
-alias gcloud="docker run --rm -it --volumes-from=gcloud-config -v ${HOST_PATH}:/local google/cloud-sdk:latest gcloud"
 alias tf=terraform
 
 source $ZSH/oh-my-zsh.sh
