@@ -38,7 +38,7 @@ gcloud() {
 	    -v ${HOST_PATH}/..$(pwd):/workspace \
 		-w /workspace \
 		--volumes-from=gcloud-config \
-		google/cloud-sdk:latest gcloud
+		google/cloud-sdk:latest gcloud $@
 }
 
 # Aliases
