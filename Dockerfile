@@ -60,6 +60,9 @@ COPY gitconfig ${HOME}/.gitconfig
 # Entrypoint script creates a user called `me` and `chown`s everything
 COPY entrypoint.sh /bin/entrypoint.sh
 
+# Copy over the useful scripts
+COPY scripts/* /usr/local/bin/
+
 # Set working directory to /workspace
 WORKDIR /workspace
 

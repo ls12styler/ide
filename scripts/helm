@@ -1,0 +1,9 @@
+#!/bin/bash
+
+docker run -ti --rm \
+  -v ${HOST_PATH}/..$(pwd):/apps \
+  -v ${KUBE_HOME}:/root/.kube \
+  -v ${KUBE_HOME}:/root/.config/kube \
+  -v ${HELM_HOME}:/root/.config/helm \
+  -v ${HELM_HOME}/cache:/root/.cache/helm
+  alpine/helm $@

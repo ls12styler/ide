@@ -1,0 +1,10 @@
+#!/bin/bash
+## Google Cloud SDK
+# Enables gcloud command to be run from the CWD,
+# which is mounted under /workspace in the container
+# and things be relative (downstream) to that CWD.
+docker run --rm -it \
+  -v ${HOST_PATH}/..$(pwd):/workspace \
+  -w /workspace \
+  --volumes-from=gcloud-config \
+  google/cloud-sdk:latest gcloud $@
