@@ -1,9 +1,9 @@
-FROM ls12styler/dind:19.03.9
+FROM ls12styler/dind:19.03.12
 
 # Install basics (HAVE to install bash for tpm to work)
 RUN apk update && apk add -U --no-cache \
     bash zsh git git-perl neovim less curl bind-tools \
-    man build-base su-exec shadow openssh-client
+    man build-base su-exec shadow openssh-client sed
 
 # Set Timezone
 RUN apk add tzdata && \
@@ -35,7 +35,9 @@ RUN git clone --depth=1 https://github.com/ctrlpvim/ctrlp.vim && \
     git clone --depth=1 https://github.com/frazrepo/vim-rainbow && \
     git clone --depth=1 https://github.com/airblade/vim-gitgutter && \
     git clone --depth=1 https://github.com/derekwyatt/vim-scala && \
-    git clone --depth=1 https://github.com/hashivim/vim-terraform.git
+    git clone --depth=1 https://github.com/hashivim/vim-terraform.git && \
+    git clone --depth=1 https://github.com/ekalinin/Dockerfile.vim.git && \
+    git clone --depth=1 https://github.com/junegunn/seoul256.vim
 
 # In the entrypoint, we'll create a user called `me`
 WORKDIR ${HOME}

@@ -50,6 +50,8 @@ Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter'
 Plug 'derekwyatt/vim-scala'
 Plug 'hashivim/vim-terraform'
+Plug 'junegunn/seoul256.vim'
+Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
 
 " vim-rainbow
@@ -67,7 +69,8 @@ let g:ctrlp_show_hidden = 1
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='molokai'
+let g:airline_theme='luna'
+
 "set laststatus=2
 
 " Buffers
