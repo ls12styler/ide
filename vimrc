@@ -92,3 +92,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Terraform
 let g:terraform_align=1
+
+" Seoul256 Theme
+let g:seoul256_background = 233
+colo seoul256
