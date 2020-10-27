@@ -20,15 +20,5 @@ useradd -u $HOST_USER_ID -g group me
 # with the right permissions
 chown -R me: /home/me
 
-# Give user `me` permission to use docker!
-if [ -S "/var/run/docker.sock" ]; then
-    # Find the hosts group ID for the docker socket
-    HOST_DOCKER_SOCKET_GROUP_ID=`stat -c %g /var/run/docker.sock`
-    # create the group `docker`
-    groupadd --non-unique -g "$HOST_DOCKER_SOCKET_GROUP_ID" docker
-    # add `me` to the `docker` group
-    adduser me docker
-fi
-
 export PROJECT_NAME=${PROJECT_NAME:-"Standalone"}
 exec /sbin/su-exec me tmux -u -2 new -s ${PROJECT_NAME}

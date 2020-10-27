@@ -40,7 +40,7 @@ This mounts the CWD under `/workspace`.
 
 # Using Docker
 
-Docker is installed onto the image. When running a container using the image, you can mount the Docker unix socket using `-v /var/run/docker.sock:/var/run/docker.sock`, which will gives access to the host machines Docker services. There is a limitation with using volume mounts because we're actually using the host services. Using something like `-e HOST_PATH=$PWD`, we can the mount directories from the host by prefixing mount options when running containers with `-v $HOST_PATH:/some/path`.
+// DOCUMENT
 
 # TODO's
 
