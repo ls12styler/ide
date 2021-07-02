@@ -5,5 +5,5 @@ docker run -ti --rm \
   -v ${KUBE_HOME}:/root/.kube \
   -v ${KUBE_HOME}:/root/.config/kube \
   -v ${HELM_HOME}:/root/.config/helm \
-  -v ${HELM_HOME}/cache:/root/.cache/helm
+  -v ${HELM_HOME}/cache:/root/.cache/helm \
   alpine/helm $@
