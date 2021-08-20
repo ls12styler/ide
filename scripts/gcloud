@@ -7,4 +7,4 @@ docker run --rm -it \
   -v ${HOST_PATH}/..$(pwd):/workspace \
   -w /workspace \
   --volumes-from=gcloud-config \
-  google/cloud-sdk:latest gcloud $@
+  gcr.io/google.com/cloudsdktool/cloud-sdk:latest gcloud $@
