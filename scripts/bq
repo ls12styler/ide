@@ -7,4 +7,5 @@ docker run --rm -it \
   -v ${HOST_PATH}/..$(pwd):/workspace \
   -w /workspace \
   --volumes-from=gcloud-config \
+  --pull always \
   google/cloud-sdk:latest bq $@

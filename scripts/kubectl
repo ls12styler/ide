@@ -4,4 +4,5 @@ docker run --rm -it \
   -v ${KUBE_HOME}:/.kube \
   -w /project \
   -v ${HOST_PATH}/..$(pwd):/project \
+  --pull always \
   bitnami/kubectl:latest $@
