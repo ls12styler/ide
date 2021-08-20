@@ -13,7 +13,7 @@ export IVY_PATH=${IVY_PATH:-"${HOST_PATH}/.ivy2"}
 export HOST_USER_ID=${HOST_USER_ID:-`stat -c %u /workspace`}
 export HOST_GROUP_ID=${HOST_GROUP_ID:-`stat -c %g /workspace`}
 
-groupadd -g $HOST_GROUP_ID group
+groupadd -g $HOST_GROUP_ID -o group
 useradd -u $HOST_USER_ID -g group me
 
 # To fix (:fingerscrossed:) an issue encoutered with the permissions of the SSH

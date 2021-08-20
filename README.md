@@ -40,7 +40,20 @@ This mounts the CWD under `/workspace`.
 
 # Using Docker
 
-// DOCUMENT
+Expose the local machines Docker Socket over HTTP using the following:
+```
+docker run -d --restart=always \
+    -p 127.0.0.1:2376:2376 \
+    --name docker-http \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    alpine/socat \
+    tcp-listen:2376,fork,reuseaddr unix-connect:/var/run/docker.sock
+```
+
+Update the `ide()` function above to include and set the following Docker Environment Variables:
+```
+DOCKER_HOST=tcp://$(docker inspect -f "{{.NetworkSettings.IPAddress}}" docker-http):2376
+```
 
 # TODO's
 
