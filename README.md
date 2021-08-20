@@ -17,8 +17,7 @@ function ide() {
   docker run --rm -it \
   -w /${PROJECT_DIR} \
   -v $PWD:/${PROJECT_DIR} \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  -v ~/.ssh:/home/me/.ssh \
+  -v ~/.ssh:/local/.ssh \
   -v ${TMUX_RESURRECT}:/home/me/.tmux/resurrect \
   -v ${ZSH_HISTORY}:/home/me/.zsh_history \
   -e IVY_PATH=${HOME}/.ivy2 \
