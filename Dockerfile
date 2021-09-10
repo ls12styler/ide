@@ -46,10 +46,11 @@ WORKDIR ${HOME}
 ENV SHELL /bin/zsh
 # Install oh-my-zsh
 RUN wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true
-RUN wget https://gist.githubusercontent.com/xfanwu/18fd7c24360c68bab884/raw/f09340ac2b0ca790b6059695de0873da8ca0c5e5/xxf.zsh-theme -O ${HOME}/.oh-my-zsh/custom/themes/xxf.zsh-theme
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/.oh-my-zsh/plugins/zsh-autosuggestions
+RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k ${HOME}/.oh-my-zsh/custom/themes/powerlevel10k
 # Copy ZSh config
 COPY zshrc ${HOME}/.zshrc
+COPY p10k.zsh ${HOME}/.p10k.zsh
 
 # Install TMUX
 COPY tmux.conf ${HOME}/.tmux.conf
