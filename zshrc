@@ -16,12 +16,10 @@ plugins=(
   git
   tmux
   kubectl
-  zsh-autosuggestions
 )
+source ${ZSH}/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 bindkey '^ ' forward-word
-
-HOST="[IDE] ($PROJECT_NAME)"
 
 # Aliases
 alias vim="nvim"
