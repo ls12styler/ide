@@ -27,8 +27,6 @@ function ide() {
   -e PROJECT_NAME=$PROJECT_NAME \
   -e GIT_USER_NAME="Me McMe" \
   -e GIT_USER_EMAIL="me@me.com" \
-  -e KUBE_HOME="/path/to/.kube" \
-  -e HELM_HOME="/path/to/.helm" \
   --name $CONTAINER_NAME \
   --net host \
   ls12styler/ide:latest
@@ -53,6 +51,12 @@ Update the `ide()` function above to include and set the following Docker Enviro
 ```
 DOCKER_HOST=tcp://$(docker inspect -f "{{.NetworkSettings.IPAddress}}" docker-http):2376
 ```
+
+# Config
+
+## gcloud, kubectl, helm & terraform
+
+Follow: https://cloud.google.com/sdk/docs/downloads-docker
 
 # TODO's
 

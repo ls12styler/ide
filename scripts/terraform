@@ -6,5 +6,5 @@
 docker run --rm -it \
   -v ${HOST_PATH}/..$(pwd):/workspace \
   -w /workspace \
-  --pull always \
+  --volumes-from gcloud-config \
   hashicorp/terraform:light $@

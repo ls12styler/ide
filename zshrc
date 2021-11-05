@@ -8,6 +8,8 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/home/me/.oh-my-zsh"
 
+source ${ZSH}/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
 # What's my theme?
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
@@ -17,8 +19,6 @@ plugins=(
   tmux
   kubectl
 )
-source ${ZSH}/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
 bindkey '^ ' forward-word
 
 # Aliases
